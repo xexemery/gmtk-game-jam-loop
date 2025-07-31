@@ -1,5 +1,5 @@
-extends Character
 class_name Fourth
+extends Character
 
 
 @onready var animated_sprite_green: AnimatedSprite2D = $AnimatedSpriteGreen

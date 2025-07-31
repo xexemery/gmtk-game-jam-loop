@@ -1,5 +1,5 @@
-extends CharacterBody2D
 class_name Character
+extends CharacterBody2D
 
 
 @onready var animated_sprite_blue: AnimatedSprite2D = $AnimatedSpriteBlue
