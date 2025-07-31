@@ -1,25 +1,11 @@
-extends CharacterBody2D
+extends Character
+class_name Player
 
-
-@onready var animated_sprite_blue: AnimatedSprite2D = $AnimatedSpriteBlue
-@onready var animated_sprite_red: AnimatedSprite2D = $AnimatedSpriteRed
 
 const SPEED = 60.0
 const JUMP_VELOCITY = -200.0
 
-var animated_sprite: AnimatedSprite2D
 var direction: float
-
-enum Sprite {
-	BLUE,
-	RED
-}
-
-var current_state: Sprite
-
-
-func _ready() -> void:
-	set_sprite(Sprite.BLUE)
 
 
 func _physics_process(delta: float) -> void:
@@ -58,17 +44,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-
-func set_sprite(sprite: Sprite) -> void:
-	match sprite:
-		Sprite.BLUE:
-			animated_sprite_blue.show()
-			animated_sprite_red.hide()
-			current_state = Sprite.BLUE
-			animated_sprite = animated_sprite_blue
-		Sprite.RED:
-			animated_sprite_red.show()
-			animated_sprite_blue.hide()
-			current_state = Sprite.RED
-			animated_sprite = animated_sprite_red
