@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://dcyjqn4uxh3wa"]
+[gd_scene load_steps=5 format=4 uid="uid://dcyjqn4uxh3wa"]
 
 [ext_resource type="Texture2D" uid="uid://c2qquddnn8cuk" path="res://assets/sprites/kenney_pico-8-platformer/default/tilemap/tilemap.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://buip0l7sschbo" path="res://scenes/player.tscn" id="2_yqjtg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -175,4 +176,10 @@ tile_set = SubResource("TileSet_lnu2h")
 collision_enabled = false
 
 [node name="Foreground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD2/wIAAAAEAAIAAAD3/wIAAAAEAAIAAAD4/wIAAAAEAAIAAAD5/wIAAAAEAAIAAAD6/wIAAAAEAAIAAAD7/wIAAAAEAAIAAAD8/wIAAAAEAAIAAAD9/wIAAAAEAAIAAAD+/wIAAAAEAAIAAAD//wIAAAAEAAIAAAAAAAIAAAAEAAIAAAABAAIAAAAEAAIAAAACAAIAAAAEAAIAAAADAAIAAAAEAAIAAAAEAAIAAAAEAAIAAAAFAAIAAAAEAAIAAAAGAAIAAAAEAAIAAAAHAAIAAAAEAAIAAAAIAAIAAAAEAAIAAAAJAAIAAAAEAAIAAAA=")
 tile_set = SubResource("TileSet_lnu2h")
+
+[node name="Player" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-32, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
