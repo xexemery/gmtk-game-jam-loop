@@ -1,23 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmxxguacm4ctj"]
+[gd_scene load_steps=6 format=3 uid="uid://bmxxguacm4ctj"]
 
 [ext_resource type="Texture2D" uid="uid://cdfrvlbly3v12" path="res://assets/sprites/character_spritesheet_transparent.png" id="1_5o7h0"]
 [ext_resource type="Script" uid="uid://dyibbfc7mhk2" path="res://scripts/mirror.gd" id="1_652kc"]
 [ext_resource type="FontFile" uid="uid://dch43024ubb2e" path="res://assets/fonts/Kenney Mini.ttf" id="3_nha6m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_652kc"]
-atlas = ExtResource("1_5o7h0")
-region = Rect2(64, 16, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_nha6m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_652kc")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5823m"]
 size = Vector2(12, 16)
@@ -28,9 +13,12 @@ size = Vector2(20, 14)
 [node name="Mirror" type="StaticBody2D"]
 script = ExtResource("1_652kc")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_nha6m")
+texture = ExtResource("1_5o7h0")
+region_enabled = true
+region_rect = Rect2(66, 16, 12, 16)
+region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
