@@ -5,7 +5,7 @@ extends Character
 @onready var ray_cast: RayCast2D = $RayCast2D
 
 const SPEED = 60.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -230.0
 
 var direction: float
 

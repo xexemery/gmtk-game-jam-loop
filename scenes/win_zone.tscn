@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://blyvdpwi2khqk"]
+
+[ext_resource type="Script" uid="uid://cgd1y3c2smwuw" path="res://scripts/win_zone.gd" id="1_q11my"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5yv7"]
+normal = Vector2(-1, 0)
+
+[node name="WinZone" type="Area2D"]
+script = ExtResource("1_q11my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_b5yv7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

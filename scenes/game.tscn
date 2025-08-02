@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dcyjqn4uxh3wa"]
+[gd_scene load_steps=7 format=4 uid="uid://dcyjqn4uxh3wa"]
 
 [ext_resource type="Texture2D" uid="uid://c2qquddnn8cuk" path="res://assets/sprites/kenney_pico-8-platformer/default/tilemap/tilemap.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://14clssuaeut3" path="res://scenes/text_box.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://buip0l7sschbo" path="res://scenes/characters/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bmxxguacm4ctj" path="res://scenes/mirror.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://ci4wvydmoi36i" path="res://scenes/door.tscn" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://bc5qj3sh4on6n" path="res://scenes/key.tscn" id="6_p57ef"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
 texture = ExtResource("1_uwrxv")
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
@@ -170,7 +168,7 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_lnu2h"]
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_yqjtg")
+sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
 [node name="Game" type="Node2D"]
 
@@ -193,10 +191,3 @@ position = Vector2(-32, 0)
 
 [node name="Mirror" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(40, 16)
-
-[node name="Door" parent="." instance=ExtResource("5_iywne")]
-unique_name_in_owner = true
-position = Vector2(8, 16)
-
-[node name="Key" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(-16, 8)
