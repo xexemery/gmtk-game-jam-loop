@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://djxg1i5s458hl"]
+
+[ext_resource type="Script" uid="uid://d3sbq1sfaaedj" path="res://scripts/utility/level_timer.gd" id="1_sl7wx"]
+[ext_resource type="Texture2D" uid="uid://b1cearv71tdk" path="res://assets/sprites/kenney_pico-8-platformer/transparent/tilemap/tilemap_packed.png" id="2_jb8fw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0sd5"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(40, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmm3a"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(32, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68160"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(24, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps2gj"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(16, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggdk2"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(8, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i5ld"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(0, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb8fw"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(24, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1a00"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(16, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c04bp"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(8, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swjmm"]
+atlas = ExtResource("2_jb8fw")
+region = Rect2(0, 64, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1a00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0sd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmm3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68160")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps2gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggdk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i5ld")
+}],
+"loop": false,
+"name": &"five",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb8fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1a00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c04bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swjmm")
+}],
+"loop": false,
+"name": &"three",
+"speed": 1.0
+}]
+
+[node name="LevelTimer" type="CanvasLayer"]
+script = ExtResource("1_sl7wx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_b1a00")
+animation = &"three"
+autoplay = "five"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
