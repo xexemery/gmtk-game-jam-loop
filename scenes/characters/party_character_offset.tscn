@@ -28,4 +28,4 @@ animations = [{
 process_mode = 3
 sprite_frames = SubResource("SpriteFrames_s4osa")
 autoplay = "default"
-frame_progress = 0.828949
+frame_progress = 0.169437
