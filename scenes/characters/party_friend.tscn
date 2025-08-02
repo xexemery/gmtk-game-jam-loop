@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdjdmgyrqwgln"]
+
+[ext_resource type="Texture2D" uid="uid://duet63smer5xe" path="res://assets/sprites/kenney_pico-8-platformer/transparent/tiles/tile_0114.png" id="1_o3y0v"]
+
+[node name="PartyFriend" type="Sprite2D"]
+texture = ExtResource("1_o3y0v")

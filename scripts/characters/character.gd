@@ -18,7 +18,10 @@ var current_state: Sprite
 
 
 func _ready() -> void:
-	set_sprite(Sprite.BLUE)
+	if GameManager.is_alt:
+		set_sprite(Sprite.RED)
+	else:
+		set_sprite(Sprite.BLUE)
 
 
 func set_sprite(sprite: Sprite) -> void:
