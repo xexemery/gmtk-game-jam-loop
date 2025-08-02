@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crh3sg170qwss"]
+
+[ext_resource type="Texture2D" uid="uid://uie1ng8eekpy" path="res://assets/sprites/kenney_pico-8-platformer/transparent/tiles/tile_0060.png" id="1_8ys6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(8, 4)
+
+[node name="SmallPlatform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = ExtResource("1_8ys6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 2)
+shape = SubResource("RectangleShape2D_nlgqw")
