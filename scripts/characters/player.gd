@@ -2,7 +2,6 @@ class_name Player
 extends Character
 
 
-@onready var ray_cast: RayCast2D = $RayCast2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 
 const SPEED = 60.0
@@ -33,10 +32,8 @@ func _physics_process(delta: float) -> void:
 	# Flip the sprite
 	if direction > 0:
 		animated_sprite.flip_h = false
-		ray_cast.target_position = Vector2(8, 0)
 	elif direction < 0:
 		animated_sprite.flip_h = true
-		ray_cast.target_position = Vector2(-8, 0)
 
 	# Play animations
 	if is_on_floor():
@@ -65,9 +62,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and ray_cast.get_collider() is Mirror:
-		ray_cast.get_collider().interact()
-		set_sprite(Sprite.RED)

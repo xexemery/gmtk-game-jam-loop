@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhqbegn3jdsh0"]
+
+[ext_resource type="Texture2D" uid="uid://bykwdrv5ln4f4" path="res://assets/sprites/mirror_spritesheet_transparent.png" id="1_bax8v"]
+
+[node name="MirrorBackground" type="Sprite2D"]
+texture = ExtResource("1_bax8v")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+region_filter_clip_enabled = true

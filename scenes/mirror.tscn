@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmxxguacm4ctj"]
+[gd_scene load_steps=4 format=3 uid="uid://bmxxguacm4ctj"]
 
 [ext_resource type="Texture2D" uid="uid://cdfrvlbly3v12" path="res://assets/sprites/character_spritesheet_transparent.png" id="1_5o7h0"]
 [ext_resource type="Script" uid="uid://dyibbfc7mhk2" path="res://scripts/mirror.gd" id="1_652kc"]
-[ext_resource type="FontFile" uid="uid://dch43024ubb2e" path="res://assets/fonts/Kenney Mini.ttf" id="3_nha6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5823m"]
-size = Vector2(12, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o7h0"]
-size = Vector2(20, 14)
+size = Vector2(16, 16)
 
 [node name="Mirror" type="StaticBody2D"]
 script = ExtResource("1_652kc")
@@ -23,22 +19,3 @@ region_filter_clip_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_5823m")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_5o7h0")
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -5.0
-offset_top = -25.0
-offset_right = 6.0
-offset_bottom = -14.0
-theme_override_fonts/font = ExtResource("3_nha6m")
-theme_override_font_sizes/font_size = 8
-text = "[E]"
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_exited"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=15 format=4 uid="uid://de8ab751qaaw0"]
+[gd_scene load_steps=19 format=4 uid="uid://de8ab751qaaw0"]
 
 [ext_resource type="Script" uid="uid://dt7ddty3e4n2g" path="res://scripts/final_scene.gd" id="1_bk8ll"]
 [ext_resource type="PackedScene" uid="uid://14clssuaeut3" path="res://scenes/text_box.tscn" id="1_pfx17"]
 [ext_resource type="Texture2D" uid="uid://c2qquddnn8cuk" path="res://assets/sprites/kenney_pico-8-platformer/default/tilemap/tilemap.png" id="2_ajlgv"]
-[ext_resource type="PackedScene" uid="uid://bmxxguacm4ctj" path="res://scenes/mirror.tscn" id="3_ajlgv"]
 [ext_resource type="PackedScene" uid="uid://b16d4sp2vddas" path="res://scenes/utility/world_boundary.tscn" id="3_ntgks"]
 [ext_resource type="PackedScene" uid="uid://cik5n7tqd0kn2" path="res://scenes/characters/party_character.tscn" id="4_sewkk"]
 [ext_resource type="PackedScene" uid="uid://cpg351ld5xkax" path="res://scenes/characters/party_character_offset.tscn" id="5_ntgks"]
 [ext_resource type="PackedScene" uid="uid://bdjdmgyrqwgln" path="res://scenes/characters/party_friend.tscn" id="7_5bask"]
 [ext_resource type="PackedScene" uid="uid://buip0l7sschbo" path="res://scenes/characters/player.tscn" id="8_gr7jt"]
+[ext_resource type="PackedScene" uid="uid://dhqbegn3jdsh0" path="res://scenes/mirror_background.tscn" id="10_1nnno"]
+[ext_resource type="PackedScene" uid="uid://dhtr62chi63xp" path="res://scenes/characters/reflection.tscn" id="10_4fty2"]
+[ext_resource type="PackedScene" uid="uid://dbdsaxr5f6y44" path="res://scenes/mirror_foreground.tscn" id="11_5tmw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsfbf"]
 texture = ExtResource("2_ajlgv")
@@ -340,7 +342,13 @@ tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ntgks")
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1nnno"]
+b = Vector2(0, 16)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gr7jt"]
+b = Vector2(0, 16)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5tmw6"]
 b = Vector2(0, 16)
 
 [node name="Level11" type="Node2D"]
@@ -401,13 +409,35 @@ position = Vector2(36, 52)
 [node name="Player" parent="." instance=ExtResource("8_gr7jt")]
 position = Vector2(4, 56)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="FirstArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstArea"]
+position = Vector2(12, 40)
+shape = SubResource("SegmentShape2D_1nnno")
+
+[node name="SecondArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondArea"]
 position = Vector2(27, 40)
 shape = SubResource("SegmentShape2D_gr7jt")
 
-[node name="Mirror" parent="." instance=ExtResource("3_ajlgv")]
-position = Vector2(136, 56)
+[node name="ThirdArea" type="Area2D" parent="."]
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdArea"]
+position = Vector2(127, 40)
+shape = SubResource("SegmentShape2D_5tmw6")
+
+[node name="Reflection" parent="." instance=ExtResource("10_4fty2")]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(136, 52)
+
+[node name="MirrorBackground" parent="." instance=ExtResource("10_1nnno")]
+position = Vector2(136, 48)
+
+[node name="MirrorForeground" parent="." instance=ExtResource("11_5tmw6")]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(136, 48)
+
+[connection signal="body_entered" from="FirstArea" to="." method="_on_first_area_entered"]
+[connection signal="body_entered" from="SecondArea" to="." method="_on_second_area_entered"]
+[connection signal="body_entered" from="ThirdArea" to="." method="_on_third_area_entered"]
