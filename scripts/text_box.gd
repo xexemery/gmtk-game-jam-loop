@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var start_symbol: Label = $TextBoxContainer/MarginContainer/HBoxContainer/Start
 @onready var end_symbol: Label = $TextBoxContainer/MarginContainer/HBoxContainer/End
 @onready var label: Label = $TextBoxContainer/MarginContainer/HBoxContainer/Label
+@onready var panel: Panel = $TextBoxContainer/Panel
 
 const CHAR_READ_RATE = 0.05
 var text_tween: Tween
@@ -16,8 +17,15 @@ enum State {
 	FINISHED
 }
 
+enum TextColor {
+	WHITE,
+	BLUE,
+	RED
+}
+
 var current_state: State = State.READY
 var text_queue: Array[String] = []
+var color_queue: Array[TextColor] = []
 
 
 signal text_finished()
@@ -45,8 +53,9 @@ func _process(_delta: float) -> void:
 					_hide_text_box()
 
 
-func queue_text(next_text: String) -> void:
+func queue_text(next_text: String, next_color: TextColor = TextColor.WHITE) -> void:
 	text_queue.push_back(next_text)
+	color_queue.push_back(next_color)
 
 
 func _hide_text_box() -> void:
@@ -66,6 +75,12 @@ func _show_text_box() -> void:
 
 func _display_text() -> void:
 	var next_text: String = text_queue.pop_front()
+	var next_color: Color = _get_color(color_queue.pop_front())
+
+	start_symbol.add_theme_color_override("font_color", next_color)
+	end_symbol.add_theme_color_override("font_color", next_color)
+	panel.get_theme_stylebox("panel").border_color = next_color
+
 	label.text = next_text
 	label.visible_ratio = 0.0
 	_change_state(State.READING)
@@ -75,6 +90,16 @@ func _display_text() -> void:
 	duration = len(next_text) * CHAR_READ_RATE
 	text_tween.tween_property(label, "visible_ratio", 1.0, duration)
 	text_tween.connect("finished", _on_text_finished)
+
+
+func _get_color(text_color: TextColor) -> Color:
+	match text_color:
+		TextColor.BLUE:
+			return Color(0.161, 0.678, 1.0)
+		TextColor.RED:
+			return Color(1.0, 0.0, 0.302)
+		_:
+			return Color(1.0, 0.945, 0.91)
 
 
 func _on_text_finished() -> void:
