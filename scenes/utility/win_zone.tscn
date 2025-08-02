@@ -12,7 +12,7 @@ script = ExtResource("1_q11my")
 shape = SubResource("SegmentShape2D_q11my")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

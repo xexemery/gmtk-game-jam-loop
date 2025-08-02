@@ -119,8 +119,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yewv4"]
+size = Vector2(6, 6)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
@@ -129,7 +129,7 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSpriteBlue" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"run"
+animation = &"idle"
 
 [node name="AnimatedSpriteRed" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -139,8 +139,12 @@ animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_dqkch")
+shape = SubResource("RectangleShape2D_yewv4")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -3)
 target_position = Vector2(8, 0)
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
