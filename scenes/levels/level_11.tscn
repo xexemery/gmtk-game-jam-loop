@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cpg351ld5xkax" path="res://scenes/characters/party_character_offset.tscn" id="5_ntgks"]
 [ext_resource type="PackedScene" uid="uid://bdjdmgyrqwgln" path="res://scenes/characters/party_friend.tscn" id="7_5bask"]
 [ext_resource type="PackedScene" uid="uid://buip0l7sschbo" path="res://scenes/characters/player.tscn" id="8_gr7jt"]
-[ext_resource type="PackedScene" uid="uid://dhqbegn3jdsh0" path="res://scenes/mirror_background.tscn" id="10_1nnno"]
+[ext_resource type="PackedScene" uid="uid://dhqbegn3jdsh0" path="res://scenes/objects/mirror_background.tscn" id="10_1nnno"]
 [ext_resource type="PackedScene" uid="uid://dhtr62chi63xp" path="res://scenes/characters/reflection.tscn" id="10_4fty2"]
-[ext_resource type="PackedScene" uid="uid://dbdsaxr5f6y44" path="res://scenes/mirror_foreground.tscn" id="11_5tmw6"]
+[ext_resource type="PackedScene" uid="uid://dbdsaxr5f6y44" path="res://scenes/objects/mirror_foreground.tscn" id="11_5tmw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsfbf"]
 texture = ExtResource("2_ajlgv")
@@ -428,6 +428,7 @@ position = Vector2(127, 40)
 shape = SubResource("SegmentShape2D_5tmw6")
 
 [node name="Reflection" parent="." instance=ExtResource("10_4fty2")]
+visible = false
 modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(136, 52)
 
