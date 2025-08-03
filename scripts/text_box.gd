@@ -18,9 +18,9 @@ enum State {
 }
 
 enum TextColor {
-	WHITE,
 	BLUE,
-	RED
+	RED,
+	WHITE
 }
 
 var current_state: State = State.READY

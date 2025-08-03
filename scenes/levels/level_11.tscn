@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://de8ab751qaaw0"]
+[gd_scene load_steps=28 format=4 uid="uid://de8ab751qaaw0"]
 
 [ext_resource type="Script" uid="uid://dt7ddty3e4n2g" path="res://scripts/final_scene.gd" id="1_bk8ll"]
 [ext_resource type="PackedScene" uid="uid://14clssuaeut3" path="res://scenes/text_box.tscn" id="1_pfx17"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://buip0l7sschbo" path="res://scenes/characters/player.tscn" id="8_gr7jt"]
 [ext_resource type="PackedScene" uid="uid://dhqbegn3jdsh0" path="res://scenes/objects/mirror_background.tscn" id="10_1nnno"]
 [ext_resource type="PackedScene" uid="uid://dhtr62chi63xp" path="res://scenes/characters/reflection.tscn" id="10_4fty2"]
+[ext_resource type="PackedScene" uid="uid://dwiqkvkho7deo" path="res://scenes/characters/reflection_alt.tscn" id="10_5tmw6"]
 [ext_resource type="PackedScene" uid="uid://dbdsaxr5f6y44" path="res://scenes/objects/mirror_foreground.tscn" id="11_5tmw6"]
+[ext_resource type="PackedScene" uid="uid://drc5s5fd3frnt" path="res://scenes/characters/companion.tscn" id="13_c8dgj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsfbf"]
 texture = ExtResource("2_ajlgv")
@@ -351,6 +353,73 @@ b = Vector2(0, 16)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5tmw6"]
 b = Vector2(0, 16)
 
+[sub_resource type="Animation" id="Animation_5tmw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ReflectionAlt:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PartyFriend:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 52)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Companion:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(84, 56)]
+}
+
+[sub_resource type="Animation" id="Animation_yf4k5"]
+resource_name = "bounce"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PartyFriend:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(36, 52), Vector2(36, 51), Vector2(36, 50), Vector2(36, 51), Vector2(36, 52)]
+}
+
 [sub_resource type="Animation" id="Animation_1nnno"]
 resource_name = "fade_in"
 length = 0.8
@@ -367,25 +436,62 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
 }
 
-[sub_resource type="Animation" id="Animation_5tmw6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_c8dgj"]
+resource_name = "fade_in_alt"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("../ReflectionAlt:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.901961)]
+}
+
+[sub_resource type="Animation" id="Animation_6leo6"]
+resource_name = "move_closer"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PartyFriend:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36, 52), Vector2(33, 52)]
+}
+
+[sub_resource type="Animation" id="Animation_fy7yk"]
+resource_name = "move_partner"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Companion:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(84, 56), Vector2(96, 56)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8dgj"]
 _data = {
 &"RESET": SubResource("Animation_5tmw6"),
-&"fade_in": SubResource("Animation_1nnno")
+&"bounce": SubResource("Animation_yf4k5"),
+&"fade_in": SubResource("Animation_1nnno"),
+&"fade_in_alt": SubResource("Animation_c8dgj"),
+&"move_closer": SubResource("Animation_6leo6"),
+&"move_partner": SubResource("Animation_fy7yk")
 }
 
 [node name="Level11" type="Node2D"]
@@ -455,7 +561,7 @@ shape = SubResource("SegmentShape2D_1nnno")
 [node name="SecondArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecondArea"]
-position = Vector2(27, 40)
+position = Vector2(26, 40)
 shape = SubResource("SegmentShape2D_gr7jt")
 
 [node name="ThirdArea" type="Area2D" parent="."]
@@ -464,16 +570,21 @@ shape = SubResource("SegmentShape2D_gr7jt")
 position = Vector2(125, 40)
 shape = SubResource("SegmentShape2D_5tmw6")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+root_node = NodePath("../Reflection")
+libraries = {
+&"": SubResource("AnimationLibrary_c8dgj")
+}
+
 [node name="Reflection" parent="." instance=ExtResource("10_4fty2")]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
 position = Vector2(136, 52)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Reflection"]
-process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_c8dgj")
-}
+[node name="ReflectionAlt" parent="." instance=ExtResource("10_5tmw6")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(136, 52)
 
 [node name="MirrorBackground" parent="." instance=ExtResource("10_1nnno")]
 position = Vector2(136, 48)
@@ -481,6 +592,15 @@ position = Vector2(136, 48)
 [node name="MirrorForeground" parent="." instance=ExtResource("11_5tmw6")]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(136, 48)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(109, 54)
+enabled = false
+zoom = Vector2(4, 4)
+
+[node name="Companion" parent="." instance=ExtResource("13_c8dgj")]
+visible = false
+position = Vector2(84, 56)
 
 [connection signal="body_entered" from="FirstArea" to="." method="_on_first_area_entered"]
 [connection signal="body_entered" from="SecondArea" to="." method="_on_second_area_entered"]

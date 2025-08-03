@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwiqkvkho7deo"]
+
+[ext_resource type="Texture2D" uid="uid://cdfrvlbly3v12" path="res://assets/sprites/character_spritesheet_transparent.png" id="1_8s42f"]
+
+[node name="ReflectionAlt" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.705882)
+z_index = 2
+texture = ExtResource("1_8s42f")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(8, 0, 8, 8)
+region_filter_clip_enabled = true
