@@ -3,15 +3,12 @@ extends Node
 
 const FILE_PATH: String = "res://scenes/levels/level_"
 const FILE_EXTENSION: String = ".tscn"
-const FILE_EXTENSION_ALT: String = "_alt.tscn"
 
-var current_extension: String
 var is_alt: bool
 var in_final_scene: bool
 
 
 func _ready() -> void:
-	current_extension = FILE_EXTENSION
 	is_alt = false
 	in_final_scene = false
 
@@ -24,13 +21,9 @@ func new_level() -> void:
 		in_final_scene = true
 
 	if next_level_number == 12:
+		in_final_scene = false
+		is_alt = not is_alt
 		next_level_number = 0
 
-	var next_level_path: String = FILE_PATH + str(next_level_number) + current_extension
+	var next_level_path: String = FILE_PATH + str(next_level_number) + FILE_EXTENSION
 	get_tree().call_deferred("change_scene_to_file", next_level_path)
-
-
-func change_to_alt() -> void:
-	current_extension = FILE_EXTENSION_ALT
-	is_alt = true
-	in_final_scene = false

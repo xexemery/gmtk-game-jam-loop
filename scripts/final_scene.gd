@@ -1,4 +1,4 @@
-extends Node2D
+extends Level
 
 
 @onready var text_box: CanvasLayer = %TextBox
