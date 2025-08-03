@@ -16,6 +16,7 @@ var fourth_color_two: int
 
 func _ready() -> void:
 	super()
+	AudioManager.play_happy()
 	animation_player.play("RESET")
 	get_tree().paused = true
 
@@ -72,6 +73,7 @@ func _walk() -> void:
 
 
 func _second_text() -> void:
+	AudioManager.stop_happy()
 	animation_player.play("zoom_in")
 	await animation_player.animation_finished
 

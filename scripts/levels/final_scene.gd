@@ -17,16 +17,17 @@ var reflection_color: int
 
 func _ready() -> void:
 	super()
-	get_tree().paused = true
 	camera.enabled = false
 	companion.hide()
 	animation_player.play("RESET")
 
 	if GameManager.is_alt:
+		AudioManager.stop_platforming_fast()
 		animation_name = "fade_in_alt"
 		self_color = 1
 		reflection_color = 0
 	else:
+		AudioManager.stop_platforming_slow()
 		animation_name = "fade_in"
 		self_color = 0
 		reflection_color = 1

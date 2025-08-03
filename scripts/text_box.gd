@@ -87,6 +87,7 @@ func _display_text() -> void:
 
 	text_tween = create_tween()
 	duration = len(next_text) * CHAR_READ_RATE
+	AudioManager.play_text()
 	text_tween.tween_property(label, "visible_ratio", 1.0, duration)
 	text_tween.connect("finished", _on_text_finished)
 
@@ -102,6 +103,7 @@ func _get_color(text_color: TextColor) -> Color:
 
 
 func _on_text_finished() -> void:
+	AudioManager.stop_text()
 	end_symbol.text = "..."
 	_change_state(State.FINISHED)
 
