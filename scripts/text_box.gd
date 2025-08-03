@@ -64,7 +64,6 @@ func _hide_text_box() -> void:
 	label.text = ""
 
 	text_box_container.hide()
-	get_tree().paused = false
 	text_finished.emit()
 
 

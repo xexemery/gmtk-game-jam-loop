@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b081efim33miw"]
+[gd_scene load_steps=22 format=4 uid="uid://b081efim33miw"]
 
 [ext_resource type="Script" uid="uid://2s3cdwqirp7r" path="res://scripts/levels/first_scene.gd" id="1_6ayib"]
 [ext_resource type="Texture2D" uid="uid://c2qquddnn8cuk" path="res://assets/sprites/kenney_pico-8-platformer/default/tilemap/tilemap.png" id="1_bw3rj"]
@@ -393,6 +393,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(68, 56)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 56)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 56)]
+}
 
 [sub_resource type="Animation" id="Animation_34hum"]
 resource_name = "walk"
@@ -421,11 +457,114 @@ tracks/1/keys = {
 "values": [Vector2(68, 56), Vector2(108, 56)]
 }
 
+[sub_resource type="Animation" id="Animation_vhkxn"]
+resource_name = "zoom_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(48, 56), Vector2(32, 56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_1q7iv"]
+resource_name = "zoom_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, 56), Vector2(52, 56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_gj3kh"]
+resource_name = "final_zoom"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(52, 56), Vector2(48, 56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_myogd"]
+resource_name = "run_away"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36, 56), Vector2(100, 56)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34hum"]
 _data = {
 &"RESET": SubResource("Animation_p6rmu"),
+&"final_zoom": SubResource("Animation_gj3kh"),
 &"heart_fade_in": SubResource("Animation_65guy"),
-&"walk": SubResource("Animation_34hum")
+&"run_away": SubResource("Animation_myogd"),
+&"walk": SubResource("Animation_34hum"),
+&"zoom_in": SubResource("Animation_vhkxn"),
+&"zoom_out": SubResource("Animation_1q7iv")
 }
 
 [node name="Level0" type="Node2D"]
@@ -473,6 +612,7 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(64, 44)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_34hum")
 }

@@ -129,7 +129,7 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSpriteBlue" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"idle"
+animation = &"run"
 
 [node name="AnimatedSpriteRed" type="AnimatedSprite2D" parent="."]
 visible = false

@@ -239,6 +239,7 @@ animations = [{
 radius = 3.0
 
 [node name="Fourth" type="CharacterBody2D"]
+process_mode = 3
 script = ExtResource("1_xlx48")
 
 [node name="AnimatedSpriteBlue" type="AnimatedSprite2D" parent="."]

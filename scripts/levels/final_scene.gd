@@ -16,6 +16,7 @@ var reflection_color: int
 
 
 func _ready() -> void:
+	super()
 	camera.enabled = false
 	companion.hide()
 	animation_player.play("RESET")
@@ -64,6 +65,9 @@ func _first_text() -> void:
 	text_box.queue_text("1...")
 	text_box.queue_text("Happy New Year!!")
 
+	await text_box.text_finished
+	get_tree().paused = false
+
 
 func _second_text() -> void:
 	animation_player.play("bounce")
@@ -83,6 +87,9 @@ func _second_text() -> void:
 	await animation_player.animation_finished
 	text_box.queue_text("...")
 	text_box.queue_text("Take a look.")
+
+	await text_box.text_finished
+	get_tree().paused = false
 
 
 func _third_text() -> void:
@@ -126,4 +133,5 @@ func _fourth_text() -> void:
 	text_box.queue_text("Let's go.")
 
 	await text_box.text_finished
+	get_tree().paused = false
 	GameManager.new_level()

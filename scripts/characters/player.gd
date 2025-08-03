@@ -11,13 +11,6 @@ var direction: float
 var coyote_time_activated: bool = false
 
 
-func _ready() -> void:
-	if GameManager.is_alt:
-		set_sprite(Sprite.RED)
-	else:
-		set_sprite(Sprite.BLUE)
-
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity
 	if not is_on_floor():
