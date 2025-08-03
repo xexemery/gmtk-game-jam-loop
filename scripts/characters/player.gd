@@ -5,10 +5,20 @@ extends Character
 @onready var coyote_timer: Timer = $CoyoteTimer
 
 const SPEED = 60.0
+const SPEED_ALT = 100.0
 const JUMP_VELOCITY = -230.0
 
+var current_speed: float
 var direction: float
 var coyote_time_activated: bool = false
+
+
+func _ready() -> void:
+	super()
+	if GameManager.is_alt:
+		current_speed = SPEED_ALT
+	else:
+		current_speed = SPEED
 
 
 func _physics_process(delta: float) -> void:
@@ -57,8 +67,8 @@ func _physics_process(delta: float) -> void:
 
 	# Apply movement
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 	move_and_slide()

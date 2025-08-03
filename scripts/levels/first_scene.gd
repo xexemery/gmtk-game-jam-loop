@@ -30,6 +30,8 @@ func _ready() -> void:
 		fourth_color_one = 2
 		fourth_color_two = 3
 
+	TransitionScreen.fade_to_normal()
+	await TransitionScreen.transition_finished
 	_first_text()
 
 
@@ -55,6 +57,7 @@ func _walk() -> void:
 	await animation_player.animation_finished
 
 	fourth.set_sprite(fourth_color_one)
+	fourth.animated_sprite.play("run")
 	third.animated_sprite.flip_h = true
 	fourth.animated_sprite.flip_h = true
 
@@ -118,5 +121,7 @@ func _second_text() -> void:
 	animation_player.play("run_away")
 
 	await animation_player.animation_finished
-	get_tree().paused = false
+	TransitionScreen.fade_to_black()
+
+	await TransitionScreen.transition_finished
 	GameManager.new_level()

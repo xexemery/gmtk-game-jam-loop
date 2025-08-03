@@ -17,6 +17,7 @@ var reflection_color: int
 
 func _ready() -> void:
 	super()
+	get_tree().paused = true
 	camera.enabled = false
 	companion.hide()
 	animation_player.play("RESET")
@@ -29,6 +30,10 @@ func _ready() -> void:
 		animation_name = "fade_in"
 		self_color = 0
 		reflection_color = 1
+
+	TransitionScreen.fade_to_normal()
+	await TransitionScreen.transition_finished
+	get_tree().paused = false
 
 
 func _on_first_area_entered(body: Node2D) -> void:
@@ -133,5 +138,7 @@ func _fourth_text() -> void:
 	text_box.queue_text("Let's go.")
 
 	await text_box.text_finished
-	get_tree().paused = false
+	TransitionScreen.fade_to_black()
+
+	await TransitionScreen.transition_finished
 	GameManager.new_level()

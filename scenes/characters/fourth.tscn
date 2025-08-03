@@ -243,12 +243,14 @@ process_mode = 3
 script = ExtResource("1_xlx48")
 
 [node name="AnimatedSpriteBlue" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="AnimatedSpriteRed" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 visible = false
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_jej6c")
@@ -256,13 +258,15 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="AnimatedSpriteGreen" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 visible = false
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_fjvg2")
-animation = &"run"
-autoplay = "run"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AnimatedSpriteGrey" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 visible = false
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_0qy7m")

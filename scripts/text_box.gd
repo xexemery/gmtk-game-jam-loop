@@ -28,7 +28,7 @@ var text_queue: Array[String] = []
 var color_queue: Array[TextColor] = []
 
 
-signal text_finished()
+signal text_finished
 
 
 func _ready() -> void:
