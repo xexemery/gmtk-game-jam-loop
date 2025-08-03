@@ -244,7 +244,7 @@ script = ExtResource("1_xlx48")
 [node name="AnimatedSpriteBlue" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
 
 [node name="AnimatedSpriteRed" type="AnimatedSprite2D" parent="."]
@@ -258,8 +258,8 @@ autoplay = "idle"
 visible = false
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_fjvg2")
-animation = &"idle"
-autoplay = "idle"
+animation = &"run"
+autoplay = "run"
 
 [node name="AnimatedSpriteGrey" type="AnimatedSprite2D" parent="."]
 visible = false
