@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=4 uid="uid://de8ab751qaaw0"]
 
-[ext_resource type="Script" uid="uid://dt7ddty3e4n2g" path="res://scripts/final_scene.gd" id="1_bk8ll"]
+[ext_resource type="Script" uid="uid://dt7ddty3e4n2g" path="res://scripts/levels/final_scene.gd" id="1_bk8ll"]
 [ext_resource type="PackedScene" uid="uid://14clssuaeut3" path="res://scenes/text_box.tscn" id="1_pfx17"]
 [ext_resource type="Texture2D" uid="uid://c2qquddnn8cuk" path="res://assets/sprites/kenney_pico-8-platformer/default/tilemap/tilemap.png" id="2_ajlgv"]
 [ext_resource type="PackedScene" uid="uid://b16d4sp2vddas" path="res://scenes/utility/world_boundary.tscn" id="3_ntgks"]
