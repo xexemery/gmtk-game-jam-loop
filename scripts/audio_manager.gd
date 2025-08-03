@@ -5,6 +5,7 @@ extends Node
 @onready var text: AudioStreamPlayer = $Text
 @onready var platforming_slow: AudioStreamPlayer = $PlatformingSlow
 @onready var platforming_fast: AudioStreamPlayer = $PlatformingFast
+@onready var jump: AudioStreamPlayer = $Jump
 
 
 func play_happy() -> void:
@@ -37,3 +38,7 @@ func play_platforming_fast() -> void:
 
 func stop_platforming_fast() -> void:
 	platforming_fast.stop()
+
+
+func play_jump() -> void:
+	jump.play()

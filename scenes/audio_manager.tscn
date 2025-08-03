@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy8byyx5rgrmi"]
+[gd_scene load_steps=7 format=3 uid="uid://cy8byyx5rgrmi"]
 
 [ext_resource type="Script" uid="uid://bi0dmdll6flr" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
 [ext_resource type="AudioStream" uid="uid://7nmfofvxolee" path="res://assets/music/2019-01-02_-_8_Bit_Menu_-_David_Renda_-_FesliyanStudios.com.mp3" id="2_liach"]
 [ext_resource type="AudioStream" uid="uid://dxghg11kynk65" path="res://assets/sounds/pluck_001.ogg" id="3_aoitu"]
 [ext_resource type="AudioStream" uid="uid://vqi0xmuq0fdp" path="res://assets/music/SLOWER-TEMPO2019-12-11_-_Retro_Platforming_-_David_Fesliyan.mp3" id="3_m6ggh"]
 [ext_resource type="AudioStream" uid="uid://d2x8hipial655" path="res://assets/music/2019-12-11_-_Retro_Platforming_-_David_Fesliyan.mp3" id="4_aoitu"]
+[ext_resource type="AudioStream" uid="uid://bxcuiocewd455" path="res://assets/sounds/maximize_008.ogg" id="6_njtn3"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
@@ -25,3 +26,7 @@ volume_db = -12.0
 [node name="PlatformingFast" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_aoitu")
 volume_db = -12.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_njtn3")
+volume_db = -8.0

@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		(is_on_floor() or not coyote_timer.is_stopped()) and
 		not GameManager.in_final_scene
 	):
+		AudioManager.play_jump()
 		velocity.y = JUMP_VELOCITY
 		coyote_timer.stop()
 		coyote_time_activated = true
